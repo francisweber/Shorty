@@ -54,11 +54,17 @@ RUN test "$(node --version)" = "v24.22.2" \
 
 FROM runtime-build AS test
 
-USER 1000:1000
+# Git is needed by the test suite for commit identity and init preflight tests.
+RUN apk add --no-cache git
+
 WORKDIR /opt/shorty
+COPY --from=shorty-git --chown=1000:1000 . /opt/shorty/.git/
 COPY --chown=1000:1000 package.json ./package.json
 COPY --chown=1000:1000 docker/runtime/Dockerfile ./docker/runtime/Dockerfile
 COPY --chown=1000:1000 tests/ ./tests/
+RUN chown 1000:1000 /opt/shorty
+
+USER 1000:1000
 RUN npm test
 ENTRYPOINT []
 CMD ["npm", "test"]

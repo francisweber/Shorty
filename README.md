@@ -136,7 +136,7 @@ Only `shorty image build` builds a runtime image. `validate`, `build`, and `serv
 
 ## License
 
-A license has not yet been selected. This prepared copy is not ready for public distribution until the rights review is complete and the project owner adds the chosen license.
+Shorty 2.0 Core is licensed under the [MIT License](LICENSE). Third-party dependencies and components retain their respective licenses.
 
 ## Guiding rule
 

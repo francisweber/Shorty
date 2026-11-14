@@ -20,7 +20,7 @@ The default `runtime-final` target is the image used by `shorty validate`, `shor
 The `test` target runs the complete Shorty npm test suite. Build it from the full Shorty repository checkout, for example:
 
 ```sh
-docker build --target test --file docker/runtime/Dockerfile .
+docker build --build-context shorty-git=.git --target test --file docker/runtime/Dockerfile .
 ```
 
-The test target copies `tests/` from that repository context. Tests are intentionally excluded from the normal npm package installed in a website project, so the test target is not buildable from the installed website package. The regular `runtime-final` target remains buildable from that package without tests.
+The test target receives `.git` only as a separate named build context so Git-based commit checks can run without adding Git metadata to the regular build context. It copies `tests/` from the Shorty repository context. Tests are intentionally excluded from the normal npm package installed in a website project, so the test target is not buildable from the installed website package. The regular `runtime-final` target remains buildable from that package without tests or Git metadata.
