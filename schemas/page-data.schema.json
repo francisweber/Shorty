@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shorty.dev/schemas/page-data.schema.json",
+  "title": "Shorty page data",
+  "description": "Validates the optional Shorty page indexing properties while leaving project-specific page content open.",
+  "type": "object",
+  "properties": {
+    "sitemap": {
+      "type": "boolean",
+      "description": "Set to false to exclude this page from sitemap.xml."
+    },
+    "noindex": {
+      "type": "boolean",
+      "description": "Set to true to emit a robots noindex directive and exclude the page from sitemap.xml."
+    }
+  },
+  "additionalProperties": true
+}

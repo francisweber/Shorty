@@ -1,0 +1,14 @@
+**
+!package.json
+!bin/
+!bin/shorty.js
+!bin/shorty-container.js
+!docker/
+!docker/runtime/
+!docker/runtime/**
+!src/
+!src/**
+!schemas/
+!schemas/**
+!tests/
+!tests/**

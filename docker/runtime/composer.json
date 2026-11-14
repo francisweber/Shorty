@@ -1,0 +1,12 @@
+{
+  "name": "shorty/cli-runtime",
+  "description": "PHP Twig runtime for the Shorty static site builder",
+  "type": "library",
+  "require": {
+    "php": ">=8.2",
+    "twig/twig": "^3.0"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

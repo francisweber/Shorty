@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shorty.dev/schemas/shorty-lock.schema.json",
+  "title": "Shorty Release Lock",
+  "description": "Pins a project to the exact Shorty CLI release used to initialize it.",
+  "type": "object",
+  "properties": {
+    "lockVersion": { "const": 1 },
+    "shortyVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    }
+  },
+  "required": ["lockVersion", "shortyVersion"],
+  "additionalProperties": false
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shorty.dev/schemas/shorty-config.schema.json",
+  "title": "Shorty Project Configuration",
+  "description": "Configuration contract for a Shorty 2.0 project.",
+  "type": "object",
+  "properties": {
+    "configVersion": {
+      "const": 1,
+      "description": "Version of the Shorty project configuration contract."
+    },
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Human-readable project name."
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "anyOf": [
+            { "const": "" },
+            { "pattern": "^https?://" }
+          ],
+          "description": "Absolute HTTP(S) base URL used to create sitemap locations. Empty string is only the initializer placeholder and must be replaced before project commands."
+        }
+      },
+      "required": ["url"],
+      "additionalProperties": false
+    },
+    "paths": {
+      "type": "object",
+      "description": "Optional project-relative path overrides. Unspecified entries use Shorty's standard paths.",
+      "properties": {
+        "components": { "$ref": "#/$defs/projectRelativePath" },
+        "pages": { "$ref": "#/$defs/projectRelativePath" },
+        "layouts": { "$ref": "#/$defs/projectRelativePath" },
+        "data": { "$ref": "#/$defs/projectRelativePath" },
+        "assets": { "$ref": "#/$defs/projectRelativePath" },
+        "schemas": { "$ref": "#/$defs/projectRelativePath" },
+        "output": { "$ref": "#/$defs/projectRelativePath" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["configVersion", "project", "site"],
+  "additionalProperties": false,
+  "$defs": {
+    "projectRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)(?:\\.|\\.\\.)(?:/|$))[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$",
+      "description": "A normalized, forward-slash-separated path relative to the project root. Absolute paths, dot segments, backslashes, and traversal outside the project are not allowed."
+    }
+  }
+}
