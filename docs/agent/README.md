@@ -109,7 +109,7 @@ Implemented: [Project structure](core/project-structure.md) and [Component model
 | `figma/implementation.md` | How an approved mapping is implemented in a Shorty project |
 | `figma/regeneration.md` | How source changes and component regeneration are handled safely |
 
-Implemented: [Figma integration overview](figma/overview.md), [design analysis](figma/design-analysis.md), [component mapping](figma/component-mapping.md), [responsive design](figma/responsive-design.md), and [variants and states](figma/variants-and-states.md). The remaining Figma integration documents are planned; the integration itself is not implemented.
+Implemented: [Figma integration overview](figma/overview.md), [design analysis](figma/design-analysis.md), [component mapping](figma/component-mapping.md), [responsive design](figma/responsive-design.md), [variants and states](figma/variants-and-states.md), and [implementation](figma/implementation.md). The remaining Figma integration document is planned; the integration itself is not implemented.
 
 ### Project context
 
