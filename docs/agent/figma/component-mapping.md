@@ -24,7 +24,7 @@ A Figma object is not necessarily a Shorty component. Decide which existing Shor
 
 | Design structure | Likely Shorty responsibility | Decision criterion |
 | --- | --- | --- |
-| Complete page or screen | Page Twig composition, layout and page data | Defines ordering and arrangement of multiple independent regions |
+| Complete page or screen | Page Twig composition, layout and page data | Defines ordering and arrangement of independent registered components, including header and footer |
 | Reusable self-contained design unit | Registered Shorty component | Has a stable responsibility, meaningful data contract and expected reuse |
 | Repeated use of a component with different text or media | Component instance with page-local JSON | Same implementation, different editorial content |
 | Internal repeated markup inside one component | Twig partial or internal template structure | Reuse is internal; no independent component contract needed |
@@ -56,9 +56,11 @@ Create a new component when the design represents an independently meaningful un
 
 The registered type must follow the existing directory and file contracts: a component directory with matching metadata JSON, Twig template and SCSS; optional JS/assets only when needed.
 
-### D. Compose or use a partial
+### D. Compose registered components, or use a partial
 
-If the design describes a whole page, arrange components in page Twig rather than creating a monolithic component solely because Figma has one top-level frame. For internal markup shared only within a component, consider a partial rather than creating another registered type.
+If the design describes a whole page, arrange registered components in page Twig rather than creating a monolithic component solely because Figma has one top-level frame. Header, hero, content sections and footer are all valid registered component candidates; the page/layout owns their placement, not their internal HTML. Registered components may themselves compose other registered components (for example, a header using a navigation component), as already specified in the [component system](../../03-component-system.md) and [data and rendering](../../04-data-and-rendering.md). This is not a new Figma-specific component mechanism. Inspect the actual renderer and instance-data resolution before assuming every nested invocation works end-to-end.
+
+Use an internal Twig partial where reuse is private to one component and no independent component contract is justified. Do not register every visual wrapper, label, divider or link as a separate component.
 
 A nested Figma component does not automatically require a nested registered Shorty component. Conversely, a repeated region can deserve a registered component even if the Figma file did not define it as one.
 
@@ -81,13 +83,13 @@ Distinguish:
 3. real behavior/state differences requiring implementation work;
 4. genuinely different responsibilities requiring separate components.
 
-Inspect Figma variants and properties as evidence, but do not assume a Shorty Core variant mechanism exists. The representation of variants and states is a separate design topic in [variants and states](variants-and-states.md) (planned).
+Inspect Figma variants and properties as evidence, but do not assume a Shorty Core variant mechanism exists. The representation of variants and states is a separate design topic in [variants and states](variants-and-states.md).
 
-A mobile design is not automatically a separate component. Prefer one coherent responsive implementation where the evidence and component responsibility support it. Missing breakpoints or mobile behavior must remain explicit questions; see [responsive design](responsive-design.md) (planned).
+A mobile design is not automatically a separate component. Prefer one coherent responsive implementation where the evidence and component responsibility support it. Missing breakpoints or mobile behavior must remain explicit questions; see [responsive design](responsive-design.md).
 
 ## 6. Preserve Figma provenance without inventing metadata
 
-ADR-0015 requires every imported component to be associated with a unique Figma component ID. However, the current component metadata schema has additionalProperties set to false and defines no Figma ID property.
+ADR-0015 requires traceable design-source references across imported pages, components and instances; mappings need not be one-to-one. However, the current component metadata schema has additionalProperties set to false and defines no Figma ID property.
 
 Therefore:
 
@@ -135,4 +137,4 @@ If a major mapping choice is ambiguous, present the alternatives and request a d
 
 ## Next stage
 
-Once the mapping is approved, follow [implementation workflow](../implementation-workflow.md) and the existing Shorty technical contracts. Detailed Figma-specific implementation and regeneration procedures remain planned, not implemented.
+Once the mapping is approved, follow [implementation workflow](../implementation-workflow.md) and the existing Shorty technical contracts. The [Figma implementation guidance](implementation.md) and [regeneration guidance](regeneration.md) document proposed procedures, not implemented automation.
