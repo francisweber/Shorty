@@ -95,7 +95,7 @@ The following map describes the intended organization. A document is not conside
 | `core/styling-and-assets.md` | SCSS, JavaScript, and asset conventions |
 | `core/data-contracts.md` | JSON data, schemas, and validation contracts |
 
-These documents should reference and complement the existing Shorty documentation and schemas. They should not become competing descriptions of the platform.
+Implemented: [Project structure](core/project-structure.md) and [Component model](core/component-model.md). The remaining Core documents are planned. These documents reference and complement the existing Shorty documentation and schemas; they must not become competing descriptions of the platform.
 
 ### Figma integration knowledge
 
