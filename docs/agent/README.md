@@ -109,6 +109,8 @@ Implemented: [Project structure](core/project-structure.md) and [Component model
 | `figma/implementation.md` | How an approved mapping is implemented in a Shorty project |
 | `figma/regeneration.md` | How source changes and component regeneration are handled safely |
 
+Implemented: [Figma integration overview](figma/overview.md) and [design analysis](figma/design-analysis.md). The remaining Figma integration documents are planned; the integration itself is not implemented.
+
 ### Project context
 
 The exact file format and location for project-specific agent context will be defined separately. It must be discoverable by agents without requiring project details to be embedded in the shared Shorty rules.
