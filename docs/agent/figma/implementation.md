@@ -56,7 +56,7 @@ Do not add a Figma ID or variants field to the metadata envelope without a separ
 
 Build component markup from the approved design role and data contract, not the raw Figma layer tree. Use appropriate semantic HTML and existing project Twig patterns.
 
-Keep component type identity distinct from instance identity. Place component calls in page Twig and editorial content in the corresponding page-local JSON files. Internal template fragments may be partials; they do not automatically become registered components.
+Keep component type identity distinct from instance identity. Place top-level component calls in page Twig and editorial content in the corresponding page-local JSON files. Header and footer may be registered components just like hero and content sections; their markup belongs to their own component templates, not the page template. Registered components may compose other registered components (for example, header → navigation) using existing Shorty conventions. Inspect actual runtime and page-context/instance-data resolution before relying on nested calls, and validate nested rendering with a focused test. Internal template fragments may be partials; they do not automatically become registered components.
 
 ### D. Apply visual styles and responsive behavior
 
